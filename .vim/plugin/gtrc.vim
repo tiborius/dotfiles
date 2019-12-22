@@ -7,7 +7,7 @@ set incsearch
 set ignorecase
 set tabstop=8
 set softtabstop=4
-set shiftwidth=4
+set shiftwidth=2
 set nocursorline
 set splitright
 set expandtab
@@ -23,7 +23,6 @@ set wildmode=list:longest
 set ruler
 set cryptmethod=blowfish2
 filetype plugin indent on
-syntax on
 
 "" NetRW
 "let g:netrw_banner = 2
@@ -165,7 +164,8 @@ let &path.="include,src/include,/usr/include/AL,"
 "let g:proj_flags='gimsSt'
 "let g:proj_run1='silent !geany %f'
 
-map gK "zyiw:exe "!firefoxdev 'https://devdocs.io/\\#q=".@z."'"<CR>
+map gK "zyiw:exe "!.dd '".@z."'"<CR>
+"map gK "zyiw:exe "!firefoxdev 'https://devdocs.io/\\#q=".@z."'"<CR>
 "map gK "zyiw:exe "!firefoxdev 'http://google.com/search?btnI=I&q=".&filetype."+".@z."'"<CR>
 "map K "zyiw:exe "!firefoxdev 'http://google.com/search?btnI=I&q=".@z."' &"<CR>
 "map K "zyiw:exe "!zeal '".@z."'"<CR><CR>
@@ -290,6 +290,17 @@ nmap <leader>q  ciw'<C-r>"'
 nmap <leader><F3> :NEXTCOLOR<cr>
 nmap <leader><F2> :PREVCOLOR<cr>
 
+"" Quickfix navigation
+"nmap <leader><F7> :cwindow<CR>
+"nmap <S-F7>       :cp<CR>
+"nmap <S-F8>       :cn<CR>
+
+"" Ctrlp:
+" Excluding version control directories
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+set wildignore+=*/node_modules/*
+
+
 "nmap gz	:e ~/Documents/private/<CR>
 
 " format JSON
@@ -306,4 +317,7 @@ nmap <leader><F2> :PREVCOLOR<cr>
 "let loaded_omnicppcomplete = 0
 
 execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
 
